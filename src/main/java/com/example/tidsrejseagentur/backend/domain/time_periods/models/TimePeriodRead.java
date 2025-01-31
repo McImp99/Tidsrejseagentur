@@ -1,0 +1,1 @@
+record TimePeriodRead(int id, String name, String description) {}

@@ -1,0 +1,1 @@
+record GuideCreate(String name, String speciality) {}

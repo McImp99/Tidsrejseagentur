@@ -1,0 +1,1 @@
+record TimeMachineUpdate(int id, String name, int capacity, String status);

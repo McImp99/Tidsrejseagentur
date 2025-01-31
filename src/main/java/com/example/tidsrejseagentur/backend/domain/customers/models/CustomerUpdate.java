@@ -1,0 +1,1 @@
+record CustomerUpdate(int id, String name, String email) {}

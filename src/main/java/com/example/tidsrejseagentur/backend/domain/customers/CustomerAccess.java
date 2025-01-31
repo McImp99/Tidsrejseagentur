@@ -1,0 +1,3 @@
+class CustomerAccess implements ICustomerAccess {
+	
+}

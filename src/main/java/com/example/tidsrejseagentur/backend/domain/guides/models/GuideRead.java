@@ -1,0 +1,1 @@
+record GuideRead(int id, String name, String speciality) {}

@@ -1,0 +1,1 @@
+record BookingDelete(int id) {}
