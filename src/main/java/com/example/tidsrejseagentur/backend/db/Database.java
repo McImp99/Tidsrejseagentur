@@ -12,15 +12,15 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Database {
-    private static final Database instance;
-
-    static {
-        try {
-            instance = new Database("jdbc:mysql://localhost:3306/timetravel", "admin", "admin");
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    private static final Database instance = null;
+//
+//    static {
+//        try {
+//            instance = new Database("jdbc:mysql://localhost:3306/timetravel", "admin", "admin");
+//        } catch (SQLException | ClassNotFoundException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     private final Connection conn;
 

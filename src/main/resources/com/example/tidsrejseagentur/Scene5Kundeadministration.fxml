@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
@@ -21,9 +18,9 @@
     </top>
 
     <center>
-        <VBox alignment ="CENTER" spacing ="20" padding="20" >
-        <Label fx:id="velkommenTekst" text="Kundeadministration" />
-            <HBox spacing ="10" >
+        <VBox alignment ="CENTER" >
+        <Label fx:id="velkommenTekst" text="Kundeadministration" style ="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <HBox spacing ="10" alignment="CENTER" >
                 <TextField fx:id="customerFirstName" promptText="Enter your First name" />
                 <TextField fx:id="customerLastName"  promptText="Enter your Last name" />
                 <TextField fx:id="customerEmail" promptText="Enter your email" />
