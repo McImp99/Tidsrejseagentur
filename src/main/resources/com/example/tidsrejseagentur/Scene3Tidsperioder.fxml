@@ -1,26 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.tidsrejseagentur.Controllers.ControllerScene3Tidsperioder"
             prefHeight="400.0" prefWidth="600.0">
     <top>
-        <HBox spacing="5" alignment="CENTER" >
-            <Button text ="Hovedmenu" onAction="#hovedmenuButton" />
-            <Button  text ="Booking" onAction="#bookingButton"/>
-            <Button  text ="Tidsperioder" onAction="#tidsperioderButton"/>
-            <Button  text ="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton"/>
-            <Button  text ="Kundeadministration" onAction="#kundeadministrationButton"/>
+        <HBox spacing="5" alignment="CENTER" HBox.hgrow="ALWAYS" style="-fx-max-width: 100%">
+            <Button text ="Hovedmenu" onAction="#hovedmenuButton" HBox.hgrow="ALWAYS"/>
+            <Button  text ="Booking" onAction="#bookingButton" HBox.hgrow="ALWAYS"/>
+            <Button  text ="Tidsperioder" onAction="#tidsperioderButton" HBox.hgrow="ALWAYS"/>
+            <Button  text ="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton" HBox.hgrow="ALWAYS"/>
+            <Button  text ="Kundeadministration" onAction="#kundeadministrationButton" HBox.hgrow="ALWAYS"/>
         </HBox>
     </top>
 
+
     <center>
-        <Label fx:id="velkommenTekst" text="Tidsperioder" />
+        <Label text="Welcome to timeperiods" />
+        <Label text ="Please choose a timeperiod u wanna learn more about!" />
     </center>
+
+    <bottom>
+        <GridPane hgap="10" vgap="10" >
+
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+
+
+            <Button text="Viking timeperiod" onAction="#vikingTimePeriodButton" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Button text="Medieval timeperiod" onAction="#medievalTimeperiodButton" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Button text="Futuristic timeperiod" onAction="#futuristicTimePeriodButton" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <Button text="Dinosaur timeperiod" onAction="#dinosaurTimePeriodButton" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        </GridPane>
+    </bottom>
 </BorderPane>

@@ -16,7 +16,7 @@ public class HelloApplication extends Application {
         SceneController.switchScene("Scene1Hello.fxml");
         primaryStage.setTitle("Velkommen til kodekonstruktørernes Time Travel Agency");
         primaryStage.show();
-
+    
     }
 
     public static Stage getPrimaryStage() {

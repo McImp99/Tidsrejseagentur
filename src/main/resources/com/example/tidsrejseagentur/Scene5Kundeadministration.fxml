@@ -22,5 +22,19 @@
 
     <center>
         <Label fx:id="velkommenTekst" text="Kundeadministration" />
+        <HBox>
+            <TextField fx:id="customerFirstName" text="Enter your First name" />
+            <TextField fx:id="customerLastName" text="Enter your Last name" />
+            <TextField fx:id="customerEmail" text="Enter your email" />
+        </HBox>
     </center>
+
+
+    <bottom>
+        <HBox spacing="5" alignment="CENTER" >
+        <Button text ="Add Customer" onAction="#addCustomerButton" />
+        <Button text ="Remove Customer" onAction="#removeCustomerButton" />
+        <Button text ="Edit Customer" onAction="#editCustomerButton" />
+        </HBox>
+    </bottom>
 </BorderPane>
