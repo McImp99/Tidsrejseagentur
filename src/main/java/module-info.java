@@ -5,4 +5,6 @@ module com.example.tidsrejseagentur {
 
     opens com.example.tidsrejseagentur to javafx.fxml;
     exports com.example.tidsrejseagentur;
+    exports com.example.tidsrejseagentur.Controllers;
+    opens com.example.tidsrejseagentur.Controllers to javafx.fxml;
 }
