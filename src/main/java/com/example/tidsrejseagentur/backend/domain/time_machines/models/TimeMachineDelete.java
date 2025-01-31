@@ -1,1 +1,3 @@
-record TimeMachineDelete(int id);
+package com.example.tidsrejseagentur.backend.domain.time_machines.models;
+
+public record TimeMachineDelete(int id) { }
