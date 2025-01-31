@@ -3,6 +3,7 @@ module com.example.tidsrejseagentur {
     requires javafx.fxml;
     requires java.sql;
     requires jdk.jshell;
+    requires flyway.core;
 
 
     opens com.example.tidsrejseagentur to javafx.fxml;
