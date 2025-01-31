@@ -9,15 +9,15 @@ import com.example.tidsrejseagentur.backend.domain.time_periods.ITimePeriodAcces
 import java.sql.Connection;
 
 public class Database {
-    private static Database instance = new Database();
+    private static final Database instance = new Database();
 
     private Connection conn;
 
-    private IBookingAccess bookings;
-    private ICustomerAccess customers;
-    private IGuideAccess guides;
-    private ITimeMachineAccess timeMachines;
-    private ITimePeriodAccess timePeriods;
+    public IBookingAccess bookings;
+    public ICustomerAccess customers;
+    public IGuideAccess guides;
+    public ITimeMachineAccess timeMachines;
+    public ITimePeriodAccess timePeriods;
 
     public static Database getInstance() {
         return instance;
