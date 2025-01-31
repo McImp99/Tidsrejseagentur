@@ -7,7 +7,7 @@ import com.example.tidsrejseagentur.backend.domain.bookings.models.BookingUpdate
 
 import java.util.List;
 
-interface IBookingAccess {
+public interface IBookingAccess {
 	List<BookingRead> readAll();
 	BookingRead read(int id);
 	int add(BookingCreate booking);

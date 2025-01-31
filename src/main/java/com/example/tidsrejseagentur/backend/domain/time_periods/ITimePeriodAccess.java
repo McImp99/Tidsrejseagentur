@@ -7,7 +7,7 @@ import com.example.tidsrejseagentur.backend.domain.time_periods.models.TimePerio
 
 import java.util.List;
 
-interface ITimePeriodAccess {
+public interface ITimePeriodAccess {
 	List<TimePeriodRead> readAll();
 	TimePeriodRead read(int id);
 	int add(TimePeriodCreate timePeriod);
