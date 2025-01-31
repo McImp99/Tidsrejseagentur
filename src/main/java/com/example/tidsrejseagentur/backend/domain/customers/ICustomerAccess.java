@@ -5,12 +5,13 @@ import com.example.tidsrejseagentur.backend.domain.customers.models.CustomerDele
 import com.example.tidsrejseagentur.backend.domain.customers.models.CustomerRead;
 import com.example.tidsrejseagentur.backend.domain.customers.models.CustomerUpdate;
 
+import java.sql.SQLException;
 import java.util.List;
 
-interface ICustomerAccess {
-	List<CustomerRead> readAll();
-	CustomerRead read(int id);
-	int add(CustomerCreate customer);
+public interface ICustomerAccess {
+	List<CustomerRead> readAll() throws SQLException;
+	CustomerRead read(int id) throws SQLException;
+	int add(CustomerCreate customer) throws SQLException;
 	int update(CustomerUpdate customer);
-	int delete(CustomerDelete customer);
+	int delete(CustomerDelete customer) throws SQLException;
 }

@@ -7,7 +7,7 @@ import com.example.tidsrejseagentur.backend.domain.time_machines.models.TimeMach
 
 import java.util.List;
 
-interface ITimeMachineAccess {
+public interface ITimeMachineAccess {
 	List<TimeMachineRead> readAll();
 	TimeMachineRead read(int id);
 	int add(TimeMachineCreate timeMachine);

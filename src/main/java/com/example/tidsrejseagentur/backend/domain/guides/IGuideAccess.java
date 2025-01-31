@@ -7,7 +7,7 @@ import com.example.tidsrejseagentur.backend.domain.guides.models.GuideUpdate;
 
 import java.util.List;
 
-interface IGuideAccess {
+public interface IGuideAccess {
 	List<GuideRead> readAll();
 	GuideRead read(int id);
 	int add(GuideCreate guide);
