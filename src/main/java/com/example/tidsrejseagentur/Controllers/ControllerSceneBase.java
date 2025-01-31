@@ -1,25 +1,23 @@
 package com.example.tidsrejseagentur.Controllers;
 
-import javafx.event.ActionEvent;
-
 public class ControllerSceneBase {
-    public void hovedmenuButton(ActionEvent actionEvent) {
+    public void hovedmenuButton() {
         SceneController.switchScene("Scene1Hello.fxml");
     }
 
-    public void bookingButton(ActionEvent actionEvent) {
+    public void bookingButton() {
         SceneController.switchScene("Scene2Booking.fxml");
     }
 
-    public void tidsperioderButton(ActionEvent actionEvent) {
+    public void tidsperioderButton() {
         SceneController.switchScene("Scene3TidsPerioder.fxml");
     }
 
-    public void tidsrejsemaskinerButton(ActionEvent actionEvent) {
+    public void tidsrejsemaskinerButton() {
         SceneController.switchScene("Scene4Tidsrejser.fxml");
     }
 
-    public void kundeadministrationButton(ActionEvent actionEvent) {
+    public void kundeadministrationButton() {
         SceneController.switchScene("Scene5Kundeadministration.fxml");
 
     }

@@ -21,20 +21,22 @@
     </top>
 
     <center>
+        <VBox alignment ="CENTER" spacing ="20" padding="20" >
         <Label fx:id="velkommenTekst" text="Kundeadministration" />
-        <HBox>
-            <TextField fx:id="customerFirstName" text="Enter your First name" />
-            <TextField fx:id="customerLastName" text="Enter your Last name" />
-            <TextField fx:id="customerEmail" text="Enter your email" />
-        </HBox>
+            <HBox spacing ="10" >
+                <TextField fx:id="customerFirstName" promptText="Enter your First name" />
+                <TextField fx:id="customerLastName"  promptText="Enter your Last name" />
+                <TextField fx:id="customerEmail" promptText="Enter your email" />
+            </HBox>
+        </VBox>
     </center>
 
 
     <bottom>
         <HBox spacing="5" alignment="CENTER" >
-        <Button text ="Add Customer" onAction="#addCustomerButton" />
-        <Button text ="Remove Customer" onAction="#removeCustomerButton" />
-        <Button text ="Edit Customer" onAction="#editCustomerButton" />
+            <Button text ="Add Customer" onAction="#addCustomerButton" />
+            <Button text ="Remove Customer" onAction="#removeCustomerButton" />
+            <Button text ="Edit Customer" onAction="#editCustomerButton" />
         </HBox>
     </bottom>
 </BorderPane>

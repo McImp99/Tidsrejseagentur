@@ -11,6 +11,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
+import java.sql.SQLException;
+
 public class ControllerScene5Kundeadministration extends ControllerSceneBase {
 
     @FXML
@@ -29,18 +31,18 @@ public class ControllerScene5Kundeadministration extends ControllerSceneBase {
 
 
 
-    public void addCustomerButton(ActionEvent actionEvent) {
+    public void addCustomerButton(ActionEvent actionEvent) throws SQLException {
         var customer = new CustomerCreate(customerFirstName.getText() + " " + customerLastName.getText(), customerEmail.getText());
         Database.getInstance().customers.add(customer);
     }
 
-    public void removeCustomerButton(ActionEvent actionEvent) {
+    public void removeCustomerButton(ActionEvent actionEvent) throws SQLException {
         var customer = new CustomerDelete(0);
-        Database.getInstance().customer.delete(customer);
+        Database.getInstance().customers.delete(customer);
     }
 
     public void editCustomerButton(ActionEvent actionEvent) {
         var customer = new CustomerUpdate(0, null, null);
-        Database.getInstance().customer.update();
+        Database.getInstance().customers.update(customer);
     }
 }
