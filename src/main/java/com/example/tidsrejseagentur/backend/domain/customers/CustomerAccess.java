@@ -60,7 +60,9 @@ class CustomerAccess implements ICustomerAccess {
 
     @Override
     public int add(CustomerCreate customer) throws SQLException {
-        var stmt = conn.prepareStatement("INSERT INTO customers (id, name, email) VALUES (?, ?, ?) RETURNING id");
+        var stmt = conn.prepareStatement("INSERT INTO customers (name, email) VALUES (?, ?) RETURNING id");
+        stmt.setString(1, customer.name());
+        stmt.setString(2, customer.email());
         var results = stmt.executeQuery();
 
         int id = Integer.parseInt(null);
