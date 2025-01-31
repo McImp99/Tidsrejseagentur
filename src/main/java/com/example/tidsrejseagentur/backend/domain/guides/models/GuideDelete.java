@@ -1,0 +1,1 @@
+record GuideDelete(int id);

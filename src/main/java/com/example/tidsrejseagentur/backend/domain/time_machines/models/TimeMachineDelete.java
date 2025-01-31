@@ -1,0 +1,1 @@
+record TimeMachineDelete(int id);

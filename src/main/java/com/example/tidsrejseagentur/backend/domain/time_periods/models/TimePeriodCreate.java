@@ -1,0 +1,1 @@
+record TimePeriodCreate(String name, String description) {}

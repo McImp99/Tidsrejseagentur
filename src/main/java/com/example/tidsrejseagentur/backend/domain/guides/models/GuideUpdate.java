@@ -1,0 +1,1 @@
+record GuideUpdate(int id, String name, String speciality) {}

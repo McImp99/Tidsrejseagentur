@@ -1,0 +1,1 @@
+record BookingCreate(int customerId, int timeMachineId, int timePeriodId, int guideId) {}

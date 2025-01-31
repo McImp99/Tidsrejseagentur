@@ -1,0 +1,1 @@
+record CustomerDelete(int id) {}
