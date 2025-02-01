@@ -52,6 +52,6 @@ public class Database {
     }
 
     public static Database getInstance() {
-        return instance;
+      return instance;
     }
 }
