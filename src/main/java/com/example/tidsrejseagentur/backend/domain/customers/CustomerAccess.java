@@ -10,8 +10,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-class CustomerAccess implements ICustomerAccess {
+public class CustomerAccess implements ICustomerAccess {
     Connection conn;
+
+    public CustomerAccess(Connection conn) {
+        this.conn = conn;
+    }
 
     @Override
     public List<CustomerRead> readAll() throws SQLException {
@@ -81,6 +85,7 @@ class CustomerAccess implements ICustomerAccess {
     @Override
     public int delete(CustomerDelete customer) throws SQLException {
         var stmt = conn.prepareStatement("DELETE FROM customers WHERE id = ?");
+        stmt.setInt(1, customer.id());
         return stmt.executeUpdate();
     }
 }
