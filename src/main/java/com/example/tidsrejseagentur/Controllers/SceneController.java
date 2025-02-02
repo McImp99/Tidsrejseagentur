@@ -17,7 +17,6 @@ public class SceneController {
             HelloApplication.getPrimaryStage().setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 }

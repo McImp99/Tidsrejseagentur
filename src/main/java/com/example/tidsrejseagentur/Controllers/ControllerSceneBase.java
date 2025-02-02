@@ -1,24 +1,24 @@
 package com.example.tidsrejseagentur.Controllers;
 
 public class ControllerSceneBase {
+
     public void hovedmenuButton() {
-        SceneController.switchScene("Scene1Hello.fxml");
+        SceneController.switchScene("SceneLandingPage.fxml");
     }
 
     public void bookingButton() {
-        SceneController.switchScene("Scene2Booking.fxml");
+        SceneController.switchScene("SceneBooking.fxml");
     }
 
     public void tidsperioderButton() {
-        SceneController.switchScene("Scene3TidsPerioder.fxml");
+        SceneController.switchScene("SceneTidsPerioder.fxml");
     }
 
     public void tidsrejsemaskinerButton() {
-        SceneController.switchScene("Scene4Tidsrejser.fxml");
+        SceneController.switchScene("SceneTidsrejseMaskiner.fxml");
     }
 
-    public void kundeadministrationButton() {
-        SceneController.switchScene("Scene5Kundeadministration.fxml");
-
+    public void kundeAdministrationButton() {
+        SceneController.switchScene("SceneKundeadministration.fxml");
     }
 }

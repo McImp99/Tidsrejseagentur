@@ -10,7 +10,7 @@
 <?import javafx.scene.control.ComboBox?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.tidsrejseagentur.Controllers.ControllerScene3Tidsperioder"
+            fx:controller="com.example.tidsrejseagentur.Controllers.ControllerSceneTidsperioder"
             prefHeight="400.0" prefWidth="600.0">
     <top>
         <HBox spacing="5" alignment="CENTER" HBox.hgrow="ALWAYS" >
@@ -18,7 +18,7 @@
             <Button  text ="Booking" onAction="#bookingButton" HBox.hgrow="ALWAYS"/>
             <Button  text ="Tidsperioder" onAction="#tidsperioderButton" HBox.hgrow="ALWAYS"/>
             <Button  text ="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton" HBox.hgrow="ALWAYS"/>
-            <Button text ="Kundeadministration" onAction="#kundeadministrationButton" HBox.hgrow="ALWAYS"/>
+            <Button text ="Kundeadministration" onAction="#kundeAdministrationButton" HBox.hgrow="ALWAYS"/>
         </HBox>
     </top>
 
@@ -32,6 +32,10 @@
     </center>
 
     <bottom>
-
+        <HBox spacing="5" alignment="CENTER" >
+            <Button text ="Add Time Period" onAction="#addTimePeriodButton" />
+            <Button text ="Remove Time Period" onAction="#removeTimePeriodButton" />
+            <Button text ="Edit Time Period" onAction="#editTimePeriodButton" />
+        </HBox>
     </bottom>
 </BorderPane>

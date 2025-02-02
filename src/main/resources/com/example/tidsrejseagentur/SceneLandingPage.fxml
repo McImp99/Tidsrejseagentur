@@ -6,14 +6,14 @@
 
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Label?>
-<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.tidsrejseagentur.Controllers.ControllerScene1Hello">
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.tidsrejseagentur.Controllers.ControllerSceneLandingPage">
         <top>
             <HBox spacing="5" alignment="CENTER" >
             <Button text ="Hovedmenu" onAction="#hovedmenuButton" />
             <Button  text ="Booking" onAction="#bookingButton"/>
             <Button  text ="Tidsperioder" onAction="#tidsperioderButton"/>
             <Button  text ="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton"/>
-            <Button  text ="Kundeadministration" onAction="#kundeadministrationButton"/>
+            <Button  text ="Kundeadministration" onAction="#kundeAdministrationButton"/>
             </HBox>
         </top>
 

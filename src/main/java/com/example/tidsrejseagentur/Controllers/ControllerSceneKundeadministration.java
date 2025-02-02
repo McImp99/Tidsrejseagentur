@@ -3,6 +3,7 @@ package com.example.tidsrejseagentur.Controllers;
 import com.example.tidsrejseagentur.backend.db.Database;
 import com.example.tidsrejseagentur.backend.domain.customers.models.CustomerCreate;
 import com.example.tidsrejseagentur.backend.domain.customers.models.CustomerDelete;
+import com.example.tidsrejseagentur.backend.domain.customers.models.CustomerRead;
 import com.example.tidsrejseagentur.backend.domain.customers.models.CustomerUpdate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,23 +13,23 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.sql.SQLException;
+import java.util.List;
 
-public class ControllerScene5Kundeadministration extends ControllerSceneBase {
+public class ControllerSceneKundeadministration extends ControllerSceneBase {
 
-    @FXML
-    private TextField customerFirstName;
-    @FXML
-    private TextField customerLastName;
-    @FXML
-    private TextField customerEmail;
+    @FXML   private TextField customerFirstName;
+    @FXML   private TextField customerLastName;
+    @FXML   private TextField customerEmail;
 
-    @FXML private ListView<String> listofCustomers;
+    @FXML   private ListView<String> listofCustomers;
 
 
     private ObservableList<String> customers = FXCollections.observableArrayList();
 
-
-
+    public void initialize() {
+        listofCustomers.setItems(customers);
+        loadCustomers();
+    }
 
 
     public void addCustomerButton(ActionEvent actionEvent) throws SQLException {
@@ -44,5 +45,20 @@ public class ControllerScene5Kundeadministration extends ControllerSceneBase {
     public void editCustomerButton(ActionEvent actionEvent) {
         var customer = new CustomerUpdate(0, null, null);
         Database.getInstance().customers.update(customer);
+    }
+
+
+
+    private void loadCustomers() {
+        customers.clear();
+        try {
+            List<CustomerRead> customerlist = Database.getInstance().customers.readAll();
+            for (CustomerRead customer : customerlist) {
+                customers.add(customer.id() + " - " + customer.name() + " ( " + customer.email());
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

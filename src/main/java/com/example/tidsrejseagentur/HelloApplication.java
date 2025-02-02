@@ -10,15 +10,12 @@ public class HelloApplication extends Application {
     private static Stage primaryStage;
 
     @Override
-
     public void start(Stage stage) throws IOException {
         primaryStage = stage;
-        SceneController.switchScene("Scene1Hello.fxml");
+        SceneController.switchScene("SceneLandingPage.fxml");
         primaryStage.setTitle("Velkommen til kodekonstruktørernes Time Travel Agency");
         primaryStage.show();
-
     }
-
 
     public static Stage getPrimaryStage() {
         return primaryStage;

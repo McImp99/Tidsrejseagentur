@@ -8,7 +8,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.tidsrejseagentur.Controllers.ControllerScene4Tidsrejser"
+            fx:controller="com.example.tidsrejseagentur.Controllers.ControllerSceneTidsrejseMaskiner"
             prefHeight="400.0" prefWidth="600.0">
     <top>
         <HBox spacing="5" alignment="CENTER" >
@@ -16,11 +16,19 @@
             <Button  text ="Booking" onAction="#bookingButton"/>
             <Button  text ="Tidsperioder" onAction="#tidsperioderButton"/>
             <Button  text ="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton"/>
-            <Button  text ="Kundeadministration" onAction="#kundeadministrationButton"/>
+            <Button  text ="Kundeadministration" onAction="#kundeAdministrationButton"/>
         </HBox>
     </top>
 
     <center>
         <Label fx:id="velkommenTekst" text="Tidsrejser" />
     </center>
+
+    <bottom>
+        <HBox spacing="5" alignment="CENTER" >
+            <Button text ="Add Time Machine" onAction="#addTimeTimeMachineButton" />
+            <Button text ="Remove Time Machine" onAction="#removeTimeMachineButton" />
+            <Button text ="Edit Time Machine" onAction="#editTimeMachineButton" />
+        </HBox>
+    </bottom>
 </BorderPane>
