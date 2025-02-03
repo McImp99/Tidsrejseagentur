@@ -1,6 +1,0 @@
-CREATE TABLE time_machines (
-    id INT NOT NULL AUTOINCREMENT PRIMARY KEY,
-    name VARCHAR(128) NOT NULL,
-    capacity INT NOT NULL,
-    status VARCHAR(64) NOT NULL
-);

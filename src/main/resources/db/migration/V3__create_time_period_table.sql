@@ -1,5 +1,0 @@
-CREATE TABLE time_periods (
-    id INT NOT NULL AUTOINCREMENT PRIMARY KEY,
-    name VARCHAR(128) NOT NULL,
-    description VARCHAR(256) NOT NULL
-);

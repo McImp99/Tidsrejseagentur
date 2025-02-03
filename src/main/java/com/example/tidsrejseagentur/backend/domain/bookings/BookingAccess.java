@@ -68,18 +68,23 @@ public class BookingAccess implements IBookingAccess {
 
     @Override
     public int add(BookingCreate booking) throws SQLException {
-        var stmt = conn.prepareStatement("INSERT INTO bookings (customer_id, time_machine_id, time_period_id, guide_id) VALUES (?, ?, ?, ?) RETURNING id");
+        var stmt = conn.prepareStatement(
+                "INSERT INTO bookings (customer_id, time_machine_id, time_period_id, guide_id) VALUES (?, ?, ?, ?)",
+                java.sql.Statement.RETURN_GENERATED_KEYS);
         stmt.setInt(1, booking.customerId());
         stmt.setInt(2, booking.timeMachineId());
         stmt.setInt(3, booking.timePeriodId());
         stmt.setInt(4, booking.guideId());
-        var results = stmt.executeQuery();
 
-        int id = Integer.parseInt(null);
-        if (results.next()) {
-            id = results.getInt("id");
+        stmt.executeUpdate(); // Execute the insert statement
+
+        var generatedKeys = stmt.getGeneratedKeys(); // Retrieve the generated key
+        int id = -1;
+        if (generatedKeys.next()) {
+            id = generatedKeys.getInt(1);
         }
 
+        stmt.close();
         return id;
     }
 

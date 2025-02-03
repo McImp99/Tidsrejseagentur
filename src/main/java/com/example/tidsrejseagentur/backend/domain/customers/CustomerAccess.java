@@ -63,19 +63,28 @@ public class CustomerAccess implements ICustomerAccess {
     }
 
     @Override
+
     public int add(CustomerCreate customer) throws SQLException {
-        var stmt = conn.prepareStatement("INSERT INTO customers (name, email) VALUES (?, ?) RETURNING id");
+
+        var stmt = conn.prepareStatement("INSERT INTO customers (name, email) VALUES (?, ?)", java.sql.Statement.RETURN_GENERATED_KEYS
+        );
         stmt.setString(1, customer.name());
         stmt.setString(2, customer.email());
-        var results = stmt.executeQuery();
 
-        int id = Integer.parseInt(null);
-        if (results.next()) {
-            id = results.getInt("id");
+
+        stmt.executeUpdate();
+
+        var generatedKeys = stmt.getGeneratedKeys();
+        int id = -1;
+        if (generatedKeys.next()) {
+            id = generatedKeys.getInt(1);
         }
 
+        stmt.close();
         return id;
     }
+
+
 
     @Override
     public int update(CustomerUpdate customer) {

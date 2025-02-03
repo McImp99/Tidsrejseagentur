@@ -24,6 +24,7 @@
                 <TextField fx:id="customerFirstName" promptText="Enter your First name" />
                 <TextField fx:id="customerLastName"  promptText="Enter your Last name" />
                 <TextField fx:id="customerEmail" promptText="Enter your email" />
+                <ListView fx:id="listofCustomers" />
             </HBox>
         </VBox>
     </center>

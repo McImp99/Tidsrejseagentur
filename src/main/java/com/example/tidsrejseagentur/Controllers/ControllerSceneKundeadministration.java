@@ -35,16 +35,22 @@ public class ControllerSceneKundeadministration extends ControllerSceneBase {
     public void addCustomerButton(ActionEvent actionEvent) throws SQLException {
         var customer = new CustomerCreate(customerFirstName.getText() + " " + customerLastName.getText(), customerEmail.getText());
         Database.getInstance().customers.add(customer);
+        loadCustomers();
+
     }
 
     public void removeCustomerButton(ActionEvent actionEvent) throws SQLException {
         var customer = new CustomerDelete(0);
         Database.getInstance().customers.delete(customer);
+        loadCustomers();
+
     }
 
     public void editCustomerButton(ActionEvent actionEvent) {
         var customer = new CustomerUpdate(0, null, null);
         Database.getInstance().customers.update(customer);
+
+        loadCustomers();
     }
 
 
@@ -53,10 +59,15 @@ public class ControllerSceneKundeadministration extends ControllerSceneBase {
         customers.clear();
         try {
             List<CustomerRead> customerlist = Database.getInstance().customers.readAll();
-            for (CustomerRead customer : customerlist) {
-                customers.add(customer.id() + " - " + customer.name() + " ( " + customer.email());
-            }
 
+            if (customerlist.isEmpty()) {
+
+                customers.add("No customers available");
+            } else {
+                for (CustomerRead customer : customerlist) {
+                    customers.add(customer.id() + " - " + customer.name() + " ( " + customer.email() + " )");
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
