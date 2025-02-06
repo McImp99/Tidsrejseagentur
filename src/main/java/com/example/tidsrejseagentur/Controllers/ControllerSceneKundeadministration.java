@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
@@ -21,13 +22,27 @@ public class ControllerSceneKundeadministration extends ControllerSceneBase {
     @FXML   private TextField customerLastName;
     @FXML   private TextField customerEmail;
 
-    @FXML   private ListView<String> listofCustomers;
+    @FXML   private ListView<CustomerRead> listofCustomers;
 
 
-    private ObservableList<String> customers = FXCollections.observableArrayList();
+    private ObservableList<CustomerRead> customers = FXCollections.observableArrayList();
 
     public void initialize() {
         listofCustomers.setItems(customers);
+
+        // Define how each CustomerRead is displayed
+        listofCustomers.setCellFactory(lv -> new ListCell<CustomerRead>() {
+            @Override
+            protected void updateItem(CustomerRead customer, boolean empty) {
+                super.updateItem(customer, empty);
+                if (empty || customer == null) {
+                    setText(null);
+                } else {
+                    setText(customer.id() + " - " + customer.name() + " (" + customer.email() + ")");
+                }
+            }
+        });
+
         loadCustomers();
     }
 
@@ -40,10 +55,18 @@ public class ControllerSceneKundeadministration extends ControllerSceneBase {
     }
 
     public void removeCustomerButton(ActionEvent actionEvent) throws SQLException {
-        var customer = new CustomerDelete(0);
-        Database.getInstance().customers.delete(customer);
-        loadCustomers();
+        CustomerRead selectedCustomer = listofCustomers.getSelectionModel().getSelectedItem();
 
+        if (selectedCustomer == null) {
+            System.out.println("No customer selected!");
+            return;
+        }
+
+        CustomerDelete customerToDelete = new CustomerDelete(selectedCustomer.id());
+
+        Database.getInstance().customers.delete(customerToDelete);
+
+        loadCustomers();
     }
 
     public void editCustomerButton(ActionEvent actionEvent) {
@@ -54,20 +77,11 @@ public class ControllerSceneKundeadministration extends ControllerSceneBase {
     }
 
 
-
     private void loadCustomers() {
         customers.clear();
         try {
             List<CustomerRead> customerlist = Database.getInstance().customers.readAll();
-
-            if (customerlist.isEmpty()) {
-
-                customers.add("No customers available");
-            } else {
-                for (CustomerRead customer : customerlist) {
-                    customers.add(customer.id() + " - " + customer.name() + " ( " + customer.email() + " )");
-                }
-            }
+            customers.addAll(customerlist);  // Add CustomerRead objects
         } catch (SQLException e) {
             e.printStackTrace();
         }
