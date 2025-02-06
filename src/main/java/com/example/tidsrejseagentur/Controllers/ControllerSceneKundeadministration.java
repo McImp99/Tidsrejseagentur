@@ -30,7 +30,6 @@ public class ControllerSceneKundeadministration extends ControllerSceneBase {
     public void initialize() {
         listofCustomers.setItems(customers);
 
-        // Define how each CustomerRead is displayed
         listofCustomers.setCellFactory(lv -> new ListCell<CustomerRead>() {
             @Override
             protected void updateItem(CustomerRead customer, boolean empty) {
