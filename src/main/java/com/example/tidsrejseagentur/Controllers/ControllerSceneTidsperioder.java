@@ -100,9 +100,9 @@ public class ControllerSceneTidsperioder extends ControllerSceneBase {
 
     private void populateTimePeriodFields(TimePeriodRead selectedTimePeriod) {
         if (selectedTimePeriod != null) {
-            String[] names = selectedTimePeriod.name().split(" ", 2);
-            timeperiodName.setText(names.length > 0 ? names[0] : "");
-            timeperiodDescription.setText(names.length > 1 ? names[1] : "");
+
+            timeperiodName.setText(selectedTimePeriod.name());
+            timeperiodDescription.setText(selectedTimePeriod.description());
         }
     }
 
