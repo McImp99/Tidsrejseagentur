@@ -27,24 +27,29 @@ public class Database {
     public ITimeMachineAccess timeMachines;
     public ITimePeriodAccess timePeriods;
 
-
     private Database() throws SQLException, ClassNotFoundException {
         String url = "jdbc:mysql://localhost:3306/timetraveldb";
         String username = "root";
         String password = "pass123";
 
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        conn = DriverManager.getConnection(url, username, password);
-        System.out.println("Connected to database successfully!");
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver"); // Ensure the MySQL driver is present
+            conn = DriverManager.getConnection(url, username, password);
+            System.out.println("Connected to database successfully!");
 
+            bookings = new BookingAccess(conn);
+            customers = new CustomerAccess(conn);
+            guides = new GuideAccess(conn);
+            timeMachines = new TimeMachineAccess(conn);
+            timePeriods = new TimePeriodAccess(conn);
 
-        bookings = new BookingAccess(conn);
-        customers = new CustomerAccess(conn);
-        guides = new GuideAccess(conn);
-        timeMachines = new TimeMachineAccess(conn);
-        timePeriods = new TimePeriodAccess(conn);
+        } catch (SQLException | ClassNotFoundException e) {
+            // Log the error and throw a runtime exception
+            System.err.println("Failed to initialize the database connection.");
+            e.printStackTrace();
+            throw e;  // Rethrow the exception to prevent further use of an invalid connection
+        }
     }
-
 
     public static Database getInstance() {
         if (instance == null) {
@@ -55,9 +60,5 @@ public class Database {
             }
         }
         return instance;
-    }
-
-
-    public Connection getConnection() {
     }
 }

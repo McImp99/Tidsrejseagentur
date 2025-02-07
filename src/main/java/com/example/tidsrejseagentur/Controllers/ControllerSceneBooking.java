@@ -48,10 +48,17 @@ public class ControllerSceneBooking extends ControllerSceneBase {
             customerAccess = new CustomerAccess(conn);
             bookingAccess = new BookingAccess(conn);
 
+
             List<TimeMachineRead> machines = timeMachineAccess.readAll();
             List<TimePeriodRead> timePeriods = timePeriodAccess.readAll();
             List<GuideRead> guides = guideAccess.readAll();
             List<CustomerRead> customers = customerAccess.readAll();
+
+
+            machineComboBox.setUserData(machines);
+            guideComboBox.setUserData(guides);
+            customerComboBox.setUserData(customers);
+            timePeriodComboBox.setUserData(timePeriods);
 
             for (TimeMachineRead machine : machines) {
                 machineComboBox.getItems().add(machine.name());
