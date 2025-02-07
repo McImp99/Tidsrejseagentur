@@ -63,6 +63,10 @@ public class Database {
         return instance;
     }
 
+    public Connection getConnection() {
+        return conn;
+    }
+
     public void closeConnection() {
         try {
             if (conn != null && !conn.isClosed()) {

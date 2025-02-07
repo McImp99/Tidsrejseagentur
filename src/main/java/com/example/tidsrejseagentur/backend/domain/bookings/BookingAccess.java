@@ -15,7 +15,7 @@ public class BookingAccess implements IBookingAccess {
     private final Connection conn;
 
     public BookingAccess(Connection conn) {
-        this.conn = Database.getInstance().conn;
+        this.conn = conn;
     }
 
     @Override
