@@ -35,7 +35,7 @@ public class ControllerSceneTidsrejseMaskiner extends ControllerSceneBase{
         setupListView(
                 listofTimeMachines,
                 timemachines,
-                timemachine -> timemachine.name(),
+                timemachine -> timemachine.name() + " - Capacity: " + timemachine.capacity() + " ("+ timemachine.status(),
                 this::populateTimeMachineFields
         );
         loadTimeMachines();
