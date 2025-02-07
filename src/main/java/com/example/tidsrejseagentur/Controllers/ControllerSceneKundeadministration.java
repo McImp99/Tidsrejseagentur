@@ -41,7 +41,7 @@ public class ControllerSceneKundeadministration extends ControllerSceneBase {
 
     public void addCustomerButton(ActionEvent actionEvent) throws SQLException {
         var customer = new CustomerCreate(
-                customerFirstName.getText() + " " + customerLastName.getText(),
+                STR."\{customerFirstName.getText()} \{customerLastName.getText()}",
                 customerEmail.getText());
         Database.getInstance().customers.add(customer);
         loadCustomers();
