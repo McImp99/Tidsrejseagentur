@@ -14,6 +14,7 @@
             <Button  text ="Tidsperioder" onAction="#tidsperioderButton"/>
             <Button  text ="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton"/>
             <Button  text ="Kundeadministration" onAction="#kundeAdministrationButton"/>
+            <Button text ="Guides" onAction="#guidesButton" HBox.hgrow="ALWAYS" />
             </HBox>
         </top>
 

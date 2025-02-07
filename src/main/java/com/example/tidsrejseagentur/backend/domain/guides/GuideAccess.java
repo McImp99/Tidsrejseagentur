@@ -70,7 +70,7 @@ public class GuideAccess implements IGuideAccess {
         stmt.setString(2, guide.speciality());
         var results = stmt.executeQuery();
 
-        int id = Integer.parseInt(null);
+        int id = -1;
         if (results.next()) {
             id = results.getInt("id");
         }
@@ -80,7 +80,23 @@ public class GuideAccess implements IGuideAccess {
 
     @Override
     public int update(GuideUpdate guide) {
-        return 0;
+        try {
+
+            var stmt = conn.prepareStatement(
+                    "UPDATE guides SET name = ?, speciality = ? WHERE id = ?"
+            );
+
+
+            stmt.setString(1, guide.name());
+            stmt.setString(2, guide.speciality());
+            stmt.setInt(3, guide.id());
+
+
+            return stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override

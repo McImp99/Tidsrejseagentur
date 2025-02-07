@@ -1,6 +1,7 @@
 package com.example.tidsrejseagentur.Controllers;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -28,6 +29,10 @@ public class ControllerSceneBase {
 
     public void kundeAdministrationButton() {
         SceneController.switchScene("SceneKundeadministration.fxml");
+    }
+
+    public void guidesButton(ActionEvent actionEvent) {
+        SceneController.switchScene("SceneGuides.fxml");
     }
 
 

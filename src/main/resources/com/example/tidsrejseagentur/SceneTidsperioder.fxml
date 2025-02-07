@@ -20,6 +20,7 @@
             <Button  text ="Tidsperioder" onAction="#tidsperioderButton" HBox.hgrow="ALWAYS"/>
             <Button  text ="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton" HBox.hgrow="ALWAYS"/>
             <Button text ="Kundeadministration" onAction="#kundeAdministrationButton" HBox.hgrow="ALWAYS"/>
+            <Button text ="Guides" onAction="#guidesButton" HBox.hgrow="ALWAYS" />
         </HBox>
     </top>
 
