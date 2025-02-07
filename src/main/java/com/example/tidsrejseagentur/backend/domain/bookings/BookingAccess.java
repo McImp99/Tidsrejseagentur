@@ -1,5 +1,6 @@
 package com.example.tidsrejseagentur.backend.domain.bookings;
 
+import com.example.tidsrejseagentur.backend.db.Database;
 import com.example.tidsrejseagentur.backend.domain.bookings.models.BookingCreate;
 import com.example.tidsrejseagentur.backend.domain.bookings.models.BookingDelete;
 import com.example.tidsrejseagentur.backend.domain.bookings.models.BookingRead;
@@ -11,10 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookingAccess implements IBookingAccess {
-    Connection conn;
+    private final Connection conn;
 
     public BookingAccess(Connection conn) {
-        this.conn = conn;
+        this.conn = Database.getInstance().conn;
     }
 
     @Override

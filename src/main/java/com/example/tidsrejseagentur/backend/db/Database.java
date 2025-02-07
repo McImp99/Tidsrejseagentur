@@ -19,7 +19,7 @@ public class Database {
 
     private static Database instance;
 
-    private final Connection conn;
+    public final Connection conn;
 
     public IBookingAccess bookings;
     public ICustomerAccess customers;
@@ -57,4 +57,7 @@ public class Database {
         return instance;
     }
 
+
+    public Connection getConnection() {
+    }
 }
