@@ -8,6 +8,7 @@ import com.example.tidsrejseagentur.backend.domain.time_periods.models.TimePerio
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,17 +66,17 @@ public class TimePeriodAccess implements ITimePeriodAccess {
 
     @Override
     public int add(TimePeriodCreate timePeriod) throws SQLException {
-        var stmt = conn.prepareStatement("INSERT INTO time_periods (name, description) VALUES (?, ?) RETURNING id");
+        var stmt = conn.prepareStatement("INSERT INTO time_periods (name, description) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
+
         stmt.setString(1, timePeriod.name());
         stmt.setString(2, timePeriod.description());
-        var results = stmt.executeQuery();
+        stmt.executeUpdate();
 
-        int id = Integer.parseInt(null);
+        var results = stmt.getGeneratedKeys();
         if (results.next()) {
-            id = results.getInt("id");
+            return results.getInt(1);
         }
-
-        return id;
+        return -1;
     }
 
     @Override

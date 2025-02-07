@@ -91,7 +91,7 @@ public class ControllerSceneKundeadministration extends ControllerSceneBase {
         customers.clear();
         try {
             List<CustomerRead> customerlist = Database.getInstance().customers.readAll();
-            customers.addAll(customerlist);  // Add CustomerRead objects
+            customers.addAll(customerlist);
         } catch (SQLException e) {
             e.printStackTrace();
         }

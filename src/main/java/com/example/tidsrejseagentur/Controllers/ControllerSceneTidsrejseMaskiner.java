@@ -88,7 +88,6 @@ public class ControllerSceneTidsrejseMaskiner extends ControllerSceneBase{
         loadTimeMachines();
     }
 
-
     public void addTimeTimeMachineButton(ActionEvent actionEvent) throws SQLException {
         var timemachine = new TimeMachineCreate(
                 timemachineName.getText(),
@@ -111,7 +110,8 @@ public class ControllerSceneTidsrejseMaskiner extends ControllerSceneBase{
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
+    }
+
     private void populateTimeMachineFields(TimeMachineRead selectedTimeMachine) {
         if (selectedTimeMachine != null) {
             timemachineName.setText(selectedTimeMachine.name());

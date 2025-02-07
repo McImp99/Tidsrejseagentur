@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.tidsrejseagentur.Controllers.ControllerSceneTidsperioder"
@@ -25,8 +26,12 @@
     <center>
         <VBox>
             <Label text="Welcome to timeperiods" />
-            <Label text ="Please choose a timeperiod u wanna learn more about!" />
+            <Label text ="Please choose a timeperiod!" />
             <ComboBox fx:id="timePeriodComboBox" />
+
+            <TextField fx:id="timeperiodName" promptText="What is the name of the Time Period?" />
+            <TextField fx:id="timeperiodDescription"  promptText="Describe the Time Period?" />
+
         </VBox>
 
     </center>
