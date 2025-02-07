@@ -28,30 +28,10 @@ public class ControllerSceneKundeadministration extends ControllerSceneBase {
     private ObservableList<CustomerRead> customers = FXCollections.observableArrayList();
 
     public void initialize() {
-        listofCustomers.setItems(customers);
-
-        listofCustomers.setCellFactory(lv -> new ListCell<CustomerRead>() {
-            @Override
-            protected void updateItem(CustomerRead customer, boolean empty) {
-                super.updateItem(customer, empty);
-                if (empty || customer == null) {
-                    setText(null);
-                } else {
-                    setText(customer.id() + " - " + customer.name() + " (" + customer.email() + ")");
-                }
-            }
-        });
-
-        listofCustomers.getSelectionModel().selectedItemProperty().addListener((obs,
-                                                                                oldSelection, newSelection) -> {
-            if (newSelection != null) {
-                String[] names = newSelection.name().split(" ", 2);
-                customerFirstName.setText(names.length > 0 ? names[0] : "");
-                customerLastName.setText(names.length > 1 ? names[1] : "");
-                customerEmail.setText(newSelection.email());
-            }
-        });
-
+        setupListView(listofCustomers, customers, customer ->
+                customer.id() + " - " + customer.name() + " (" + customer.email() + ")"
+        );
+        setupSelectionListener(listofCustomers, this::populateCustomerFields);
         loadCustomers();
     }
 
@@ -109,6 +89,15 @@ public class ControllerSceneKundeadministration extends ControllerSceneBase {
             customers.addAll(customerlist);  // Add CustomerRead objects
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void populateCustomerFields(CustomerRead selectedCustomer) {
+        if (selectedCustomer != null) {
+            String[] names = selectedCustomer.name().split(" ", 2);
+            customerFirstName.setText(names.length > 0 ? names[0] : "");
+            customerLastName.setText(names.length > 1 ? names[1] : "");
+            customerEmail.setText(selectedCustomer.email());
         }
     }
 }
