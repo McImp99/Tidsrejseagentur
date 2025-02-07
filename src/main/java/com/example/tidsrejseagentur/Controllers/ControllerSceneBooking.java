@@ -42,6 +42,7 @@ public class ControllerSceneBooking extends ControllerSceneBase {
     private IBookingAccess bookingAccess;
 
     public void initialize() {
+        System.out.println("ControllerSceneBooking initialized!"); //DEBUGGING
         try {
             // Get the access layers from Database instance, without casting to specific classes
             timeMachineAccess = Database.getInstance().timeMachines;
