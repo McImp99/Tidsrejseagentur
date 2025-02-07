@@ -2,44 +2,46 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.tidsrejseagentur.Controllers.ControllerSceneKundeadministration"
             prefHeight="400.0" prefWidth="600.0">
+
+
     <top>
         <VBox spacing="10" alignment="CENTER">
-            <HBox spacing="15" alignment="CENTER">
-                <Button text="Hovedmenu" onAction="#hovedmenuButton" HBox.hgrow="ALWAYS" />
-                <Button text="Booking" onAction="#bookingButton" HBox.hgrow="ALWAYS" />
-                <Button text="Tidsperioder" onAction="#tidsperioderButton" HBox.hgrow="ALWAYS" />
+            <HBox spacing="15" alignment="CENTER" prefWidth="800">
+                <Button text="Hovedmenu" onAction="#hovedmenuButton" minWidth="120" />
+                <Button text="Booking" onAction="#bookingButton" minWidth="120" />
+                <Button text="Tidsperioder" onAction="#tidsperioderButton" minWidth="140" />
             </HBox>
-            <HBox spacing="15" alignment="CENTER">
-                <Button text="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton" HBox.hgrow="ALWAYS" />
-                <Button text="Kundeadministration" onAction="#kundeAdministrationButton" HBox.hgrow="ALWAYS" />
-                <Button text="Guides" onAction="#guidesButton" HBox.hgrow="ALWAYS" />
+            <HBox spacing="15" alignment="CENTER" prefWidth="800">
+                <Button text="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton" minWidth="140" />
+                <Button text="Kundeadministration" onAction="#kundeAdministrationButton" minWidth="160" />
+                <Button text="Guides" onAction="#guidesButton" minWidth="120" />
             </HBox>
         </VBox>
     </top>
 
+
     <center>
-        <VBox alignment ="CENTER" >
-        <Label fx:id="velkommenTekst" text="Kundeadministration" style ="-fx-font-size: 24px; -fx-font-weight: bold;"/>
-            <HBox spacing ="10" alignment="CENTER" >
-                <TextField fx:id="customerFirstName" promptText="Enter your First name" />
-                <TextField fx:id="customerLastName"  promptText="Enter your Last name" />
-                <TextField fx:id="customerEmail" promptText="Enter your email" />
-                <ListView fx:id="listofCustomers" />
+        <VBox spacing="10" alignment="CENTER">
+            <Label fx:id="velkommenTekst" text="Kundeadministration" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <HBox spacing="15" alignment="CENTER">
+                <TextField fx:id="customerFirstName" promptText="Enter your First name" minWidth="150" />
+                <TextField fx:id="customerLastName" promptText="Enter your Last name" minWidth="150" />
+                <TextField fx:id="customerEmail" promptText="Enter your email" minWidth="150" />
             </HBox>
+            <ListView fx:id="listofCustomers" prefHeight="150" />
         </VBox>
     </center>
 
 
     <bottom>
-        <HBox spacing="5" alignment="CENTER" >
-            <Button text ="Add Customer" onAction="#addCustomerButton" />
-            <Button text ="Remove Customer" onAction="#removeCustomerButton" />
-            <Button text ="Edit Customer" onAction="#editCustomerButton" />
+        <HBox spacing="15" alignment="CENTER">
+            <Button text="Add Customer" onAction="#addCustomerButton" minWidth="120" />
+            <Button text="Remove Customer" onAction="#removeCustomerButton" minWidth="120" />
+            <Button text="Edit Customer" onAction="#editCustomerButton" minWidth="120" />
         </HBox>
     </bottom>
 </BorderPane>

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -10,39 +7,41 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.tidsrejseagentur.Controllers.ControllerSceneGuides"
             prefHeight="400.0" prefWidth="600.0">
+
+
     <top>
         <VBox spacing="10" alignment="CENTER">
-            <HBox spacing="15" alignment="CENTER">
-                <Button text="Hovedmenu" onAction="#hovedmenuButton" HBox.hgrow="ALWAYS" />
-                <Button text="Booking" onAction="#bookingButton" HBox.hgrow="ALWAYS" />
-                <Button text="Tidsperioder" onAction="#tidsperioderButton" HBox.hgrow="ALWAYS" />
+            <HBox spacing="15" alignment="CENTER" prefWidth="800">
+                <Button text="Hovedmenu" onAction="#hovedmenuButton" minWidth="120" />
+                <Button text="Booking" onAction="#bookingButton" minWidth="120" />
+                <Button text="Tidsperioder" onAction="#tidsperioderButton" minWidth="140" />
             </HBox>
-            <HBox spacing="15" alignment="CENTER">
-                <Button text="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton" HBox.hgrow="ALWAYS" />
-                <Button text="Kundeadministration" onAction="#kundeAdministrationButton" HBox.hgrow="ALWAYS" />
-                <Button text="Guides" onAction="#guidesButton" HBox.hgrow="ALWAYS" />
+            <HBox spacing="15" alignment="CENTER" prefWidth="800">
+                <Button text="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton" minWidth="140" />
+                <Button text="Kundeadministration" onAction="#kundeAdministrationButton" minWidth="160" />
+                <Button text="Guides" onAction="#guidesButton" minWidth="120" />
             </HBox>
         </VBox>
     </top>
 
+
     <center>
-        <VBox>
-            <Label text="Welcome to Guides" />
-            <Label text ="Please choose a Guide" />
-            <ComboBox fx:id="guideComboBox" />
+        <VBox spacing="10" alignment="CENTER">
+            <Label fx:id="velkommenTekst" text="Welcome to Guides" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Label text="Please choose a Guide" />
+            <ComboBox fx:id="guideComboBox" minWidth="250" />
 
-            <TextField fx:id="guideName" promptText="What is the name of the guide?" />
-            <TextField fx:id="guideSpecialty"  promptText="What is the specialty of the guide?" />
-
+            <TextField fx:id="guideName" promptText="What is the name of the guide?" minWidth="250" />
+            <TextField fx:id="guideSpecialty" promptText="What is the specialty of the guide?" minWidth="250" />
         </VBox>
-
     </center>
 
+
     <bottom>
-        <HBox spacing="5" alignment="CENTER" >
-            <Button text ="Add Guide" onAction="#addGuideButton" />
-            <Button text ="Remove Guide" onAction="#removeGuideButton" />
-            <Button text ="Edit Guide" onAction="#editGuideButton" />
+        <HBox spacing="15" alignment="CENTER">
+            <Button text="Add Guide" onAction="#addGuideButton" minWidth="120" />
+            <Button text="Remove Guide" onAction="#removeGuideButton" minWidth="120" />
+            <Button text="Edit Guide" onAction="#editGuideButton" minWidth="120" />
         </HBox>
     </bottom>
 </BorderPane>

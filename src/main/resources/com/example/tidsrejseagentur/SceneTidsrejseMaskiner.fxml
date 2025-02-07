@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -10,35 +6,46 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.tidsrejseagentur.Controllers.ControllerSceneTidsrejseMaskiner"
             prefHeight="400.0" prefWidth="600.0">
-    <VBox spacing="10" alignment="CENTER">
-        <HBox spacing="15" alignment="CENTER">
-            <Button text="Hovedmenu" onAction="#hovedmenuButton" HBox.hgrow="ALWAYS" />
-            <Button text="Booking" onAction="#bookingButton" HBox.hgrow="ALWAYS" />
-            <Button text="Tidsperioder" onAction="#tidsperioderButton" HBox.hgrow="ALWAYS" />
-        </HBox>
-        <HBox spacing="15" alignment="CENTER">
-            <Button text="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton" HBox.hgrow="ALWAYS" />
-            <Button text="Kundeadministration" onAction="#kundeAdministrationButton" HBox.hgrow="ALWAYS" />
-            <Button text="Guides" onAction="#guidesButton" HBox.hgrow="ALWAYS" />
-        </HBox>
-    </VBox>
+
+
+    <top>
+        <VBox spacing="10" alignment="CENTER">
+            <HBox spacing="15" alignment="CENTER">
+                <Button text="Hovedmenu" onAction="#hovedmenuButton" minWidth="120"/>
+                <Button text="Booking" onAction="#bookingButton" minWidth="120"/>
+                <Button text="Tidsperioder" onAction="#tidsperioderButton" minWidth="140"/>
+            </HBox>
+            <HBox spacing="15" alignment="CENTER">
+                <Button text="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton" minWidth="140"/>
+                <Button text="Kundeadministration" onAction="#kundeAdministrationButton" minWidth="160"/>
+                <Button text="Guides" onAction="#guidesButton" minWidth="120"/>
+            </HBox>
+        </VBox>
+    </top>
+
 
     <center>
-        <VBox alignment ="CENTER" >
-            <Label fx:id="velkommenTekst" text="TimeMachine administration" style ="-fx-font-size: 24px; -fx-font-weight: bold;"/>
-            <HBox spacing ="10" alignment="CENTER" >
-                <TextField fx:id="timemachineName" promptText="What is the name of the Time Machine?" />
-                <TextField fx:id="timemachineCapacity"  promptText="How much capacity does the time machine have?" />
-                <ListView fx:id="listofTimeMachines" />
+        <VBox alignment="CENTER" spacing="15">
+            <Label fx:id="velkommenTekst" text="TimeMachine Administration"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+            <HBox spacing="10" alignment="CENTER">
+                <VBox spacing="10">
+                    <TextField fx:id="timemachineName" promptText="Enter Time Machine Name" prefWidth="250"/>
+                    <TextField fx:id="timemachineCapacity" promptText="Enter Capacity" prefWidth="250"/>
+                </VBox>
+                <ListView fx:id="listofTimeMachines" prefWidth="200" prefHeight="100"/>
             </HBox>
         </VBox>
     </center>
 
+
     <bottom>
-        <HBox spacing="5" alignment="CENTER" >
-            <Button text ="Add Time Machine" onAction="#addTimeTimeMachineButton" />
-            <Button text ="Remove Time Machine" onAction="#removeTimeMachineButton" />
-            <Button text ="Edit Time Machine" onAction="#editTimeMachineButton" />
+        <HBox spacing="15" alignment="CENTER" prefHeight="50">
+            <Button text="Add Time Machine" onAction="#addTimeTimeMachineButton" minWidth="150"/>
+            <Button text="Remove Time Machine" onAction="#removeTimeMachineButton" minWidth="150"/>
+            <Button text="Edit Time Machine" onAction="#editTimeMachineButton" minWidth="150"/>
         </HBox>
     </bottom>
+
 </BorderPane>

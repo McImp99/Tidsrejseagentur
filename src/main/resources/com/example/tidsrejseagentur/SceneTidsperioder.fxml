@@ -1,51 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
+
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.tidsrejseagentur.Controllers.ControllerSceneTidsperioder"
             prefHeight="400.0" prefWidth="600.0">
+
+
     <top>
         <VBox spacing="10" alignment="CENTER">
             <HBox spacing="15" alignment="CENTER">
-                <Button text="Hovedmenu" onAction="#hovedmenuButton" HBox.hgrow="ALWAYS" />
-                <Button text="Booking" onAction="#bookingButton" HBox.hgrow="ALWAYS" />
-                <Button text="Tidsperioder" onAction="#tidsperioderButton" HBox.hgrow="ALWAYS" />
+                <Button text="Hovedmenu" onAction="#hovedmenuButton" minWidth="120"/>
+                <Button text="Booking" onAction="#bookingButton" minWidth="120"/>
+                <Button text="Tidsperioder" onAction="#tidsperioderButton" minWidth="140"/>
             </HBox>
             <HBox spacing="15" alignment="CENTER">
-                <Button text="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton" HBox.hgrow="ALWAYS" />
-                <Button text="Kundeadministration" onAction="#kundeAdministrationButton" HBox.hgrow="ALWAYS" />
-                <Button text="Guides" onAction="#guidesButton" HBox.hgrow="ALWAYS" />
+                <Button text="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton" minWidth="140"/>
+                <Button text="Kundeadministration" onAction="#kundeAdministrationButton" minWidth="160"/>
+                <Button text="Guides" onAction="#guidesButton" minWidth="120"/>
             </HBox>
         </VBox>
     </top>
 
+
     <center>
-        <VBox>
-            <Label text="Welcome to timeperiods" />
-            <Label text ="Please choose a timeperiod!" />
-            <ComboBox fx:id="timePeriodComboBox" />
+        <VBox spacing="15" alignment="CENTER">
+            <Label text="Welcome to Time Periods" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            <Label text="Please choose a time period!" />
 
-            <TextField fx:id="timeperiodName" promptText="What is the name of the Time Period?" />
-            <TextField fx:id="timeperiodDescription"  promptText="Describe the Time Period?" />
+            <ComboBox fx:id="timePeriodComboBox" promptText="Select Time Period" prefWidth="250" />
 
+            <TextField fx:id="timeperiodName" promptText="What is the name of the Time Period?" prefWidth="250"/>
+            <TextField fx:id="timeperiodDescription" promptText="Describe the Time Period" prefWidth="250"/>
         </VBox>
-
     </center>
 
+
     <bottom>
-        <HBox spacing="5" alignment="CENTER" >
-            <Button text ="Add Time Period" onAction="#addTimePeriodButton" />
-            <Button text ="Remove Time Period" onAction="#removeTimePeriodButton" />
-            <Button text ="Edit Time Period" onAction="#editTimePeriodButton" />
+        <HBox spacing="15" alignment="CENTER" prefHeight="50">
+            <Button text="Add Time Period" onAction="#addTimePeriodButton" minWidth="150"/>
+            <Button text="Remove Time Period" onAction="#removeTimePeriodButton" minWidth="150"/>
+            <Button text="Edit Time Period" onAction="#editTimePeriodButton" minWidth="150"/>
         </HBox>
     </bottom>
+
 </BorderPane>
