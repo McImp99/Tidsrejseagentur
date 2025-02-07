@@ -84,12 +84,21 @@ public class CustomerAccess implements ICustomerAccess {
         return id;
     }
 
-
-
     @Override
-    public int update(CustomerUpdate customer) {
-        return 0;
+    public int update(CustomerUpdate customer) throws SQLException {
+        var stmt = conn.prepareStatement("UPDATE customers SET name = ?, email = ? WHERE id = ?");
+        stmt.setString(1, customer.name());
+        stmt.setString(2, customer.email());
+        stmt.setInt(3, customer.id());
+
+        int rowsAffected = stmt.executeUpdate();
+        stmt.close();
+
+        return rowsAffected;
     }
+
+
+
 
     @Override
     public int delete(CustomerDelete customer) throws SQLException {

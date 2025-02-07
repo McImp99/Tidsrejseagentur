@@ -12,6 +12,6 @@ public interface ICustomerAccess {
 	List<CustomerRead> readAll() throws SQLException;
 	CustomerRead read(int id) throws SQLException;
 	int add(CustomerCreate customer) throws SQLException;
-	int update(CustomerUpdate customer);
+	int update(CustomerUpdate customer) throws SQLException;
 	int delete(CustomerDelete customer) throws SQLException;
 }

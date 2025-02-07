@@ -42,6 +42,16 @@ public class ControllerSceneKundeadministration extends ControllerSceneBase {
             }
         });
 
+        listofCustomers.getSelectionModel().selectedItemProperty().addListener((obs,
+                                                                                oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                String[] names = newSelection.name().split(" ", 2);
+                customerFirstName.setText(names.length > 0 ? names[0] : "");
+                customerLastName.setText(names.length > 1 ? names[1] : "");
+                customerEmail.setText(newSelection.email());
+            }
+        });
+
         loadCustomers();
     }
 
@@ -68,9 +78,25 @@ public class ControllerSceneKundeadministration extends ControllerSceneBase {
         loadCustomers();
     }
 
-    public void editCustomerButton(ActionEvent actionEvent) {
-        var customer = new CustomerUpdate(0, null, null);
-        Database.getInstance().customers.update(customer);
+    public void editCustomerButton(ActionEvent actionEvent) throws SQLException {
+
+        CustomerRead selectedCustomer = listofCustomers.getSelectionModel().getSelectedItem();
+
+        if (selectedCustomer == null) {
+            System.out.println("No customer selected!");
+            return;
+        }
+
+        String updatedName = customerFirstName.getText() + " " + customerLastName.getText();
+        String updatedEmail = customerEmail.getText();
+
+        if (updatedName.trim().isEmpty() || updatedEmail.trim().isEmpty()) {
+            System.out.println("Name and Email cannot be empty!");
+            return;
+        }
+
+        var customerUpdate = new CustomerUpdate(selectedCustomer.id(), updatedName, updatedEmail);
+        Database.getInstance().customers.update(customerUpdate);
 
         loadCustomers();
     }
