@@ -21,6 +21,7 @@ public class Database {
 
     public final Connection conn;
 
+
     public IBookingAccess bookings;
     public ICustomerAccess customers;
     public IGuideAccess guides;
@@ -60,5 +61,16 @@ public class Database {
             }
         }
         return instance;
+    }
+
+    public void closeConnection() {
+        try {
+            if (conn != null && !conn.isClosed()) {
+                conn.close();
+                System.out.println("Database connection closed.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

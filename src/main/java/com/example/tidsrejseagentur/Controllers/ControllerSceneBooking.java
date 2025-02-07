@@ -2,13 +2,18 @@ package com.example.tidsrejseagentur.Controllers;
 
 import com.example.tidsrejseagentur.backend.db.Database;
 import com.example.tidsrejseagentur.backend.domain.bookings.BookingAccess;
+import com.example.tidsrejseagentur.backend.domain.bookings.IBookingAccess;
 import com.example.tidsrejseagentur.backend.domain.bookings.models.BookingCreate;
 import com.example.tidsrejseagentur.backend.domain.customers.CustomerAccess;
+import com.example.tidsrejseagentur.backend.domain.customers.ICustomerAccess;
 import com.example.tidsrejseagentur.backend.domain.customers.models.CustomerRead;
 import com.example.tidsrejseagentur.backend.domain.guides.GuideAccess;
+import com.example.tidsrejseagentur.backend.domain.guides.IGuideAccess;
 import com.example.tidsrejseagentur.backend.domain.guides.models.GuideRead;
+import com.example.tidsrejseagentur.backend.domain.time_machines.ITimeMachineAccess;
 import com.example.tidsrejseagentur.backend.domain.time_machines.TimeMachineAccess;
 import com.example.tidsrejseagentur.backend.domain.time_machines.models.TimeMachineRead;
+import com.example.tidsrejseagentur.backend.domain.time_periods.ITimePeriodAccess;
 import com.example.tidsrejseagentur.backend.domain.time_periods.TimePeriodAccess;
 import com.example.tidsrejseagentur.backend.domain.time_periods.models.TimePeriodRead;
 import javafx.event.ActionEvent;
@@ -30,31 +35,28 @@ public class ControllerSceneBooking extends ControllerSceneBase {
     @FXML private ComboBox<String> timePeriodComboBox;
     @FXML private Text confirmationMessage;
 
-    private TimeMachineAccess timeMachineAccess;
-    private TimePeriodAccess timePeriodAccess;
-    private GuideAccess guideAccess;
-    private CustomerAccess customerAccess;
-    private BookingAccess bookingAccess;
+    private ITimeMachineAccess timeMachineAccess;
+    private ITimePeriodAccess timePeriodAccess;
+    private IGuideAccess guideAccess;
+    private ICustomerAccess customerAccess;
+    private IBookingAccess bookingAccess;
 
     public void initialize() {
         try {
+            // Get the access layers from Database instance, without casting to specific classes
+            timeMachineAccess = Database.getInstance().timeMachines;
+            timePeriodAccess = Database.getInstance().timePeriods;
+            guideAccess = Database.getInstance().guides;
+            customerAccess = Database.getInstance().customers;
+            bookingAccess = Database.getInstance().bookings;
 
-            Connection conn = Database.getInstance().getConnection();
-
-
-            timeMachineAccess = new TimeMachineAccess(conn);
-            timePeriodAccess = new TimePeriodAccess(conn);
-            guideAccess = new GuideAccess(conn);
-            customerAccess = new CustomerAccess(conn);
-            bookingAccess = new BookingAccess(conn);
-
-
+            // Fetch data from each access layer
             List<TimeMachineRead> machines = timeMachineAccess.readAll();
             List<TimePeriodRead> timePeriods = timePeriodAccess.readAll();
             List<GuideRead> guides = guideAccess.readAll();
             List<CustomerRead> customers = customerAccess.readAll();
 
-
+            // Set data to combo boxes
             machineComboBox.setUserData(machines);
             guideComboBox.setUserData(guides);
             customerComboBox.setUserData(customers);
@@ -75,27 +77,6 @@ public class ControllerSceneBooking extends ControllerSceneBase {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-    }
-
-    private void loadComboBoxes() throws SQLException {
-
-        List<TimeMachineRead> machines = timeMachineAccess.readAll();
-        List<TimePeriodRead> timePeriods = timePeriodAccess.readAll();
-        List<GuideRead> guides = guideAccess.readAll();
-        List<CustomerRead> customers = customerAccess.readAll();
-
-        for (TimeMachineRead machine : machines) {
-            machineComboBox.getItems().add(machine.name());
-        }
-        for (TimePeriodRead period : timePeriods) {
-            timePeriodComboBox.getItems().add(period.name());
-        }
-        for (GuideRead guide : guides) {
-            guideComboBox.getItems().add(guide.name());
-        }
-        for (CustomerRead customer : customers) {
-            customerComboBox.getItems().add(customer.name());
         }
     }
 
