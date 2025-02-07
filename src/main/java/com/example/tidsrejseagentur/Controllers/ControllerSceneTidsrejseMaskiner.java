@@ -23,8 +23,8 @@ public class ControllerSceneTidsrejseMaskiner extends ControllerSceneBase{
 
 
 
-    private TextField timemachineCapacity;
-    private TextField timemachineName;
+    @FXML    private TextField timemachineCapacity;
+    @FXML    private TextField timemachineName;
 
 
     @FXML private ListView<TimeMachineRead> listofTimeMachines;
