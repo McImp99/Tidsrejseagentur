@@ -67,6 +67,11 @@ public class TimeMachineAccess implements ITimeMachineAccess {
 
     @Override
     public int add(TimeMachineCreate timeMachine) throws SQLException {
+        int capacityValue = timeMachine.capacity();
+        if ("Not in use".equals(timeMachine.capacity())) {
+            capacityValue = 1;
+        }
+
         var stmt = conn.prepareStatement("INSERT INTO time_machines (name, status, capacity) VALUES (?, ?, ?)",
                 Statement.RETURN_GENERATED_KEYS);
         stmt.setString(1, timeMachine.name());
