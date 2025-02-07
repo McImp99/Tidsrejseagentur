@@ -12,6 +12,6 @@ public interface ITimePeriodAccess {
 	List<TimePeriodRead> readAll() throws SQLException;
 	TimePeriodRead read(int id) throws SQLException;
 	int add(TimePeriodCreate timePeriod) throws SQLException;
-	int update(TimePeriodUpdate timePeriod);
+	int update(TimePeriodUpdate timePeriod) throws SQLException;
 	int delete(TimePeriodDelete timePeriod) throws SQLException;
 }

@@ -33,16 +33,34 @@ public class ControllerSceneTidsperioder extends ControllerSceneBase {
         setupComboBox(timePeriodComboBox, listoftimePeriods, item -> item.name(), selectedItem -> populateTimePeriodFields(selectedItem));
     }
 
-    public void editTimePeriodButton(ActionEvent actionEvent) {
+    public void editTimePeriodButton(ActionEvent actionEvent) throws SQLException {
         TimePeriodRead selected = timePeriodComboBox.getSelectionModel().getSelectedItem();
         if (selected == null) {
             System.out.println("No time period selected");
             return;
         }
 
-        var updatedTimePeriod = new TimePeriodUpdate(selected.id(), timeperiodName.getText(), timeperiodDescription.getText());
-        Database.getInstance().timePeriods.update(updatedTimePeriod);
-        loadTimePeriods();
+
+        var updatedTimePeriod = new TimePeriodUpdate(
+                selected.id(),
+                timeperiodName.getText(),
+                timeperiodDescription.getText()
+        );
+
+        try {
+
+            int rowsAffected = Database.getInstance().timePeriods.update(updatedTimePeriod);
+
+            if (rowsAffected > 0) {
+                System.out.println("Time period updated successfully!");
+                loadTimePeriods();
+            } else {
+                System.out.println("Update failed: No rows affected.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error updating time period: " + e.getMessage());
+        }
     }
 
     public void removeTimePeriodButton(ActionEvent actionEvent) throws SQLException {

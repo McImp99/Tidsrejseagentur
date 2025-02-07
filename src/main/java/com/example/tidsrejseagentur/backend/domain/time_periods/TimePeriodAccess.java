@@ -80,8 +80,17 @@ public class TimePeriodAccess implements ITimePeriodAccess {
     }
 
     @Override
-    public int update(TimePeriodUpdate timePeriod) {
-        return 0;
+    public int update(TimePeriodUpdate timePeriod) throws SQLException {
+
+        var stmt = conn.prepareStatement(
+                "UPDATE time_periods SET name = ?, description = ? WHERE id = ?"
+        );
+
+        stmt.setString(1, timePeriod.name());
+        stmt.setString(2, timePeriod.description());
+        stmt.setInt(3, timePeriod.id());
+
+        return stmt.executeUpdate();
     }
 
     @Override
