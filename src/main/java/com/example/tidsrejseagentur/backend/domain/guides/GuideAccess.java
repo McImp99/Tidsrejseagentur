@@ -8,6 +8,7 @@ import com.example.tidsrejseagentur.backend.domain.guides.models.GuideUpdate;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,14 +66,19 @@ public class GuideAccess implements IGuideAccess {
 
     @Override
     public int add(GuideCreate guide) throws SQLException {
-        var stmt = conn.prepareStatement("INSERT INTO guides (name, speciality) VALUES (?, ?) RETURNING id");
+        var stmt = conn.prepareStatement("INSERT INTO guides (name, speciality) VALUES (?, ?)",
+                        Statement.RETURN_GENERATED_KEYS);
         stmt.setString(1, guide.name());
         stmt.setString(2, guide.speciality());
-        var results = stmt.executeQuery();
+
+        int rowsAffected = stmt.executeUpdate();
 
         int id = -1;
-        if (results.next()) {
-            id = results.getInt("id");
+        if (rowsAffected > 0) {
+            var generatedKeys = stmt.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                id = generatedKeys.getInt(1);
+            }
         }
 
         return id;
