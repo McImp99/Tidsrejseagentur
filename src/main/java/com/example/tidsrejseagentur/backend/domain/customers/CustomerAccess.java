@@ -6,6 +6,8 @@ import com.example.tidsrejseagentur.backend.domain.customers.models.CustomerRead
 import com.example.tidsrejseagentur.backend.domain.customers.models.CustomerUpdate;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,23 +67,33 @@ public class CustomerAccess implements ICustomerAccess {
     @Override
 
     public int add(CustomerCreate customer) throws SQLException {
+        String checkQuery = "SELECT COUNT(*) FROM customers WHERE email = ?";
+        String insertQuery = "INSERT INTO customers (name, email) VALUES (?, ?)";
 
-        var stmt = conn.prepareStatement("INSERT INTO customers (name, email) VALUES (?, ?)", java.sql.Statement.RETURN_GENERATED_KEYS
-        );
-        stmt.setString(1, customer.name());
-        stmt.setString(2, customer.email());
+        try (PreparedStatement checkStmt = conn.prepareStatement(checkQuery);
+             PreparedStatement insertStmt = conn.prepareStatement(insertQuery, java.sql.Statement.RETURN_GENERATED_KEYS)) {
 
 
-        stmt.executeUpdate();
+            checkStmt.setString(1, customer.email());
+            ResultSet rs = checkStmt.executeQuery();
+            if (rs.next() && rs.getInt(1) > 0) {
+                System.out.println("Error: Email already exists in the database.");
+                return -1;
+            }
 
-        var generatedKeys = stmt.getGeneratedKeys();
-        int id = -1;
-        if (generatedKeys.next()) {
-            id = generatedKeys.getInt(1);
+
+            insertStmt.setString(1, customer.name());
+            insertStmt.setString(2, customer.email());
+            insertStmt.executeUpdate();
+
+
+            ResultSet generatedKeys = insertStmt.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                return generatedKeys.getInt(1);
+            }
+            return -1;
+
         }
-
-        stmt.close();
-        return id;
     }
 
     @Override
