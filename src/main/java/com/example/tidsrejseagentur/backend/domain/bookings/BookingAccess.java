@@ -91,11 +91,13 @@ public class BookingAccess implements IBookingAccess {
 
     @Override
     public int update(BookingUpdate booking) {
+        //TO DO
         return 0;
     }
 
     @Override
     public int delete(BookingDelete booking) throws SQLException {
+        //TO DO
         var stmt = conn.prepareStatement("DELETE FROM bookings WHERE id = ?");
         stmt.setInt(1, booking.id());
         return stmt.executeUpdate();
