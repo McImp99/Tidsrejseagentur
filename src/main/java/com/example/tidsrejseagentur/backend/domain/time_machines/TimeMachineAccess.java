@@ -7,6 +7,7 @@ import com.example.tidsrejseagentur.backend.domain.time_machines.models.TimeMach
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,18 +67,22 @@ public class TimeMachineAccess implements ITimeMachineAccess {
 
     @Override
     public int add(TimeMachineCreate timeMachine) throws SQLException {
-        var stmt = conn.prepareStatement("INSERT INTO time_machines (name, status, capacity) VALUES (?, ?, ?) RETURNING id");
+        var stmt = conn.prepareStatement("INSERT INTO time_machines (name, status, capacity) VALUES (?, ?, ?)",
+                Statement.RETURN_GENERATED_KEYS);
         stmt.setString(1, timeMachine.name());
         stmt.setInt(2, timeMachine.capacity());
         stmt.setString(3, timeMachine.status());
-        var results = stmt.executeQuery();
 
-        int id = Integer.parseInt(null);
-        if (results.next()) {
-            id = results.getInt("id");
+        int rowsAffected = stmt.executeUpdate();
+        if (rowsAffected > 0) {
+            try (var generatedKeys = stmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return generatedKeys.getInt(1);
+                }
+            }
         }
 
-        return id;
+        return -1;
     }
 
     @Override
