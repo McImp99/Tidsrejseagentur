@@ -38,23 +38,5 @@ public class ControllerSceneTidsperioder extends ControllerSceneBase {
     }
 
 
-    /* @FXML
-    public void initialize() {
-        try {
-            List<TimePeriodRead> periodObjects = Database.getInstance().timePeriods.readAll();
-
-            List<String> periodNames = periodObjects.stream()
-                    .map(TimePeriodRead::name)
-                    .collect(Collectors.toList());
-
-            timePeriods = FXCollections.observableArrayList(periodNames);
-            timePeriodComboBox.setItems(timePeriods);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("ERROR: Could not load time periods from database.");
-
-    }
-}*/
 
 }

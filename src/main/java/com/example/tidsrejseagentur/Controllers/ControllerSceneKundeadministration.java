@@ -28,16 +28,21 @@ public class ControllerSceneKundeadministration extends ControllerSceneBase {
     private ObservableList<CustomerRead> customers = FXCollections.observableArrayList();
 
     public void initialize() {
-        setupListView(listofCustomers, customers, customer ->
-                customer.id() + " - " + customer.name() + " (" + customer.email() + ")"
+        setupListView(
+                listofCustomers,
+                customers,
+                customer -> customer.id()
+                        + " - " + customer.name() + " (" + customer.email() + ")",
+                this::populateCustomerFields
         );
-        setupSelectionListener(listofCustomers, this::populateCustomerFields);
         loadCustomers();
     }
 
 
     public void addCustomerButton(ActionEvent actionEvent) throws SQLException {
-        var customer = new CustomerCreate(customerFirstName.getText() + " " + customerLastName.getText(), customerEmail.getText());
+        var customer = new CustomerCreate(
+                customerFirstName.getText() + " " + customerLastName.getText(),
+                customerEmail.getText());
         Database.getInstance().customers.add(customer);
         loadCustomers();
 

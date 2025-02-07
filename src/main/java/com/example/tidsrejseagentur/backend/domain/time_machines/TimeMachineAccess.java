@@ -81,8 +81,16 @@ public class TimeMachineAccess implements ITimeMachineAccess {
     }
 
     @Override
-    public int update(TimeMachineUpdate timeMachine) {
-        return 0;
+    public int update(TimeMachineUpdate timeMachine) throws SQLException {
+        var stmt = conn.prepareStatement(
+                "UPDATE time_machines SET name = ?, capacity = ?, status = ? WHERE id = ?"
+        );
+        stmt.setString(1, timeMachine.name());
+        stmt.setInt(2, timeMachine.capacity());
+        stmt.setString(3, timeMachine.status());
+        stmt.setInt(4, timeMachine.id());
+
+        return stmt.executeUpdate();
     }
 
     @Override

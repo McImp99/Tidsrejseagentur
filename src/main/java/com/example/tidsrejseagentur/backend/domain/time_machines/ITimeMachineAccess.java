@@ -12,6 +12,6 @@ public interface ITimeMachineAccess {
 	List<TimeMachineRead> readAll() throws SQLException;
 	TimeMachineRead read(int id) throws SQLException;
 	int add(TimeMachineCreate timeMachine) throws SQLException;
-	int update(TimeMachineUpdate timeMachine);
+	int update(TimeMachineUpdate timeMachine) throws SQLException;
 	int delete(TimeMachineDelete timeMachine) throws SQLException;
 }

@@ -21,7 +21,14 @@
     </top>
 
     <center>
-        <Label fx:id="velkommenTekst" text="Tidsrejser" />
+        <VBox alignment ="CENTER" >
+            <Label fx:id="velkommenTekst" text="TimeMachine administration" style ="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <HBox spacing ="10" alignment="CENTER" >
+                <TextField fx:id="timemachineName" promptText="What is the name of the Time Machine?" />
+                <TextField fx:id="timemachineCapacity"  promptText="How much capacity does the time machine have?" />
+                <ListView fx:id="listofTimeMachines" />
+            </HBox>
+        </VBox>
     </center>
 
     <bottom>
