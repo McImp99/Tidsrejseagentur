@@ -8,14 +8,18 @@
 <?import javafx.scene.control.Label?>
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.tidsrejseagentur.Controllers.ControllerSceneLandingPage">
         <top>
-            <HBox spacing="5" alignment="CENTER" >
-            <Button text ="Hovedmenu" onAction="#hovedmenuButton" />
-            <Button  text ="Booking" onAction="#bookingButton"/>
-            <Button  text ="Tidsperioder" onAction="#tidsperioderButton"/>
-            <Button  text ="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton"/>
-            <Button  text ="Kundeadministration" onAction="#kundeAdministrationButton"/>
-            <Button text ="Guides" onAction="#guidesButton" HBox.hgrow="ALWAYS" />
-            </HBox>
+            <VBox spacing="10" alignment="CENTER">
+                <HBox spacing="15" alignment="CENTER">
+                    <Button text="Hovedmenu" onAction="#hovedmenuButton" HBox.hgrow="ALWAYS" />
+                    <Button text="Booking" onAction="#bookingButton" HBox.hgrow="ALWAYS" />
+                    <Button text="Tidsperioder" onAction="#tidsperioderButton" HBox.hgrow="ALWAYS" />
+                </HBox>
+                <HBox spacing="15" alignment="CENTER">
+                    <Button text="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton" HBox.hgrow="ALWAYS" />
+                    <Button text="Kundeadministration" onAction="#kundeAdministrationButton" HBox.hgrow="ALWAYS" />
+                    <Button text="Guides" onAction="#guidesButton" HBox.hgrow="ALWAYS" />
+                </HBox>
+            </VBox>
         </top>
 
 <center>

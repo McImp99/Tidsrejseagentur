@@ -6,39 +6,39 @@
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tidsrejseagentur.Controllers.ControllerSceneBooking" prefHeight="500.0" prefWidth="600.0">
     <children>
-        <!-- Title -->
+
         <Text text="Booking Scene" layoutX="250.0" layoutY="30.0" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
 
-        <!-- Machine Dropdown -->
+
         <Label text="Choose Machine:" layoutX="50.0" layoutY="80.0" />
         <ComboBox fx:id="machineComboBox" layoutX="200.0" layoutY="80.0" prefWidth="200.0"/>
 
-        <!-- Guide Dropdown -->
+
         <Label text="Choose Guide:" layoutX="50.0" layoutY="120.0"/>
         <ComboBox fx:id="guideComboBox" layoutX="200.0" layoutY="120.0" prefWidth="200.0"/>
 
-        <!-- Customer Dropdown -->
+
         <Label text="Choose Customer:" layoutX="50.0" layoutY="160.0"/>
         <ComboBox fx:id="customerComboBox" layoutX="200.0" layoutY="160.0" prefWidth="200.0"/>
 
-        <!-- Time Period Dropdown -->
+
         <Label text="Choose Time Period:" layoutX="50.0" layoutY="200.0"/>
         <ComboBox fx:id="timePeriodComboBox" layoutX="200.0" layoutY="200.0" prefWidth="200.0"/>
 
-        <!-- Book Button -->
+
         <Button text="Book Now" layoutX="250.0" layoutY="250.0" prefWidth="100.0" onAction="#bookButtonAction"/>
 
-        <!-- Confirmation Message -->
+
         <Text fx:id="confirmationMessage" layoutX="200.0" layoutY="300.0" style="-fx-font-size: 16px; -fx-fill: green;" />
 
-        <!-- Footer with additional buttons -->
-        <HBox layoutX="50.0" layoutY="350.0" spacing="10.0" alignment="CENTER" prefWidth="500.0">
-            <Button text="Hovedmenu" onAction="#hovedmenuButton" />
-            <Button text="Booking" onAction="#bookingButton"/>
-            <Button text="Tidsperioder" onAction="#tidsperioderButton"/>
-            <Button text="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton"/>
-            <Button text="Kundeadministration" onAction="#kundeAdministrationButton"/>
-            <Button text="Guides" onAction="#guidesButton" HBox.hgrow="ALWAYS" />
+
+        <HBox layoutX="50.0" layoutY="20.0" spacing="15.0" alignment="CENTER" prefWidth="800.0">
+            <Button text="Hovedmenu" onAction="#hovedmenuButton" minWidth="120" />
+            <Button text="Booking" onAction="#bookingButton" minWidth="120" />
+            <Button text="Tidsperioder" onAction="#tidsperioderButton" minWidth="140" />
+            <Button text="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton" minWidth="160" />
+            <Button text="Kundeadministration" onAction="#kundeAdministrationButton" minWidth="180" />
+            <Button text="Guides" onAction="#guidesButton" minWidth="120" />
         </HBox>
     </children>
 </AnchorPane>

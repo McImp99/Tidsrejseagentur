@@ -11,14 +11,18 @@
             fx:controller="com.example.tidsrejseagentur.Controllers.ControllerSceneGuides"
             prefHeight="400.0" prefWidth="600.0">
     <top>
-        <HBox spacing="5" alignment="CENTER" HBox.hgrow="ALWAYS" >
-            <Button text ="Hovedmenu" onAction="#hovedmenuButton" HBox.hgrow="ALWAYS"/>
-            <Button  text ="Booking" onAction="#bookingButton" HBox.hgrow="ALWAYS"/>
-            <Button  text ="Tidsperioder" onAction="#tidsperioderButton" HBox.hgrow="ALWAYS"/>
-            <Button  text ="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton" HBox.hgrow="ALWAYS"/>
-            <Button text ="Kundeadministration" onAction="#kundeAdministrationButton" HBox.hgrow="ALWAYS"/>
-            <Button text ="Guides" onAction="#guidesButton" HBox.hgrow="ALWAYS" />
-        </HBox>
+        <VBox spacing="10" alignment="CENTER">
+            <HBox spacing="15" alignment="CENTER">
+                <Button text="Hovedmenu" onAction="#hovedmenuButton" HBox.hgrow="ALWAYS" />
+                <Button text="Booking" onAction="#bookingButton" HBox.hgrow="ALWAYS" />
+                <Button text="Tidsperioder" onAction="#tidsperioderButton" HBox.hgrow="ALWAYS" />
+            </HBox>
+            <HBox spacing="15" alignment="CENTER">
+                <Button text="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton" HBox.hgrow="ALWAYS" />
+                <Button text="Kundeadministration" onAction="#kundeAdministrationButton" HBox.hgrow="ALWAYS" />
+                <Button text="Guides" onAction="#guidesButton" HBox.hgrow="ALWAYS" />
+            </HBox>
+        </VBox>
     </top>
 
     <center>
