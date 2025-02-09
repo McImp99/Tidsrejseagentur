@@ -10,21 +10,22 @@
 
     <children>
 
-        <HBox alignment="CENTER" spacing="15.0" prefWidth="600.0" layoutY="10.0">
-            <Button text="Hovedmenu" onAction="#hovedmenuButton" minWidth="100"/>
-            <Button text="Booking" onAction="#bookingButton" minWidth="100"/>
-            <Button text="Tidsperioder" onAction="#tidsperioderButton" minWidth="120"/>
-            <Button text="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton" minWidth="140"/>
-            <Button text="Kundeadministration" onAction="#kundeAdministrationButton" minWidth="160"/>
-            <Button text="Guides" onAction="#guidesButton" minWidth="100"/>
-        </HBox>
 
+        <VBox spacing="10" alignment="CENTER" layoutX="0.0" layoutY="10.0" prefWidth="600.0">
+            <HBox spacing="15" alignment="CENTER" prefWidth="600.0">
+                <Button text="Hovedmenu" onAction="#hovedmenuButton" minWidth="120"/>
+                <Button text="Booking" onAction="#bookingButton" minWidth="120"/>
+                <Button text="Tidsperioder" onAction="#tidsperioderButton" minWidth="140"/>
+            </HBox>
+            <HBox spacing="15" alignment="CENTER" prefWidth="600.0">
+                <Button text="Tidsrejsemaskiner" onAction="#tidsrejsemaskinerButton" minWidth="140"/>
+                <Button text="Kundeadministration" onAction="#kundeAdministrationButton" minWidth="160"/>
+                <Button text="Guides" onAction="#guidesButton" minWidth="120"/>
+            </HBox>
+        </VBox>
 
-        <VBox alignment="TOP_CENTER" spacing="20.0" layoutX="50.0" layoutY="50.0" prefWidth="500.0">
-
-
+        <VBox alignment="TOP_CENTER" spacing="20.0" layoutX="50.0" layoutY="100.0" prefWidth="500.0">
             <Text text="Booking Scene" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
-
 
             <GridPane hgap="10" vgap="10">
                 <Label text="Choose Machine:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
@@ -40,11 +41,8 @@
                 <ComboBox fx:id="timePeriodComboBox" prefWidth="200.0" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
             </GridPane>
 
-
             <Button text="Book Now" onAction="#bookButtonAction" prefWidth="150.0" alignment="CENTER"/>
-
-
-            <Text fx:id="confirmationMessage" style="-fx-font-size: 16px; -fx-fill: green;" />
+            <Text fx:id="confirmationMessage" style="-fx-font-size: 16px; -fx-fill: green;"/>
         </VBox>
     </children>
 </AnchorPane>
