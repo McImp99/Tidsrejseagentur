@@ -9,6 +9,9 @@ import java.io.IOException;
 
 public class SceneController {
 
+    /*
+    method to control the switching scenes
+     */
     public static void switchScene(String fxmlFile) {
         try {
             FXMLLoader loader = new FXMLLoader(SceneController.class.getResource("/com/example/tidsrejseagentur/" + fxmlFile));

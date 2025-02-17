@@ -35,27 +35,18 @@ public class ControllerSceneBooking extends ControllerSceneBase {
     @FXML private ComboBox<String> timePeriodComboBox;
     @FXML private Text confirmationMessage;
 
-    private ITimeMachineAccess timeMachineAccess;
-    private ITimePeriodAccess timePeriodAccess;
-    private IGuideAccess guideAccess;
-    private ICustomerAccess customerAccess;
-    private IBookingAccess bookingAccess;
+    IBookingAccess bookingAccess = new BookingAccess(Database.getInstance().getConnection());
 
     public void initialize() {
         System.out.println("ControllerSceneBooking initialized!"); //DEBUGGING
         try {
-            // Get the access layers from Database instance, without casting to specific classes
-            timeMachineAccess = Database.getInstance().timeMachines;
-            timePeriodAccess = Database.getInstance().timePeriods;
-            guideAccess = Database.getInstance().guides;
-            customerAccess = Database.getInstance().customers;
-            bookingAccess = Database.getInstance().bookings;
-
             // Fetch data from each access layer
-            List<TimeMachineRead> machines = timeMachineAccess.readAll();
-            List<TimePeriodRead> timePeriods = timePeriodAccess.readAll();
-            List<GuideRead> guides = guideAccess.readAll();
-            List<CustomerRead> customers = customerAccess.readAll();
+
+
+            List<TimeMachineRead> machines = Database.getInstance().timeMachines.readAll();
+            List<TimePeriodRead> timePeriods = Database.getInstance().timePeriods.readAll();
+            List<GuideRead> guides = Database.getInstance().guides.readAll();
+            List<CustomerRead> customers = Database.getInstance().customers.readAll();
 
             // Set data to combo boxes
             machineComboBox.setUserData(machines);
@@ -95,8 +86,9 @@ public class ControllerSceneBooking extends ControllerSceneBase {
 
 
         try {
-
+            //Opret booking objekt
             BookingCreate bookingCreate = new BookingCreate(selectedCustomerId, selectedMachineId, selectedTimePeriodId, selectedGuideId);
+
             int bookingId = bookingAccess.add(bookingCreate);
 
             confirmationMessage.setText("Booking successful! Booking ID: " + bookingId);

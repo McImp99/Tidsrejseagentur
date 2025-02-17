@@ -38,14 +38,12 @@ public class ControllerSceneKundeadministration extends ControllerSceneBase {
         loadCustomers();
     }
 
-
     public void addCustomerButton(ActionEvent actionEvent) throws SQLException {
         var customer = new CustomerCreate(
                 STR."\{customerFirstName.getText()} \{customerLastName.getText()}",
                 customerEmail.getText());
         Database.getInstance().customers.add(customer);
         loadCustomers();
-
     }
 
     public void removeCustomerButton(ActionEvent actionEvent) throws SQLException {
